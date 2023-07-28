@@ -1,6 +1,9 @@
 import java.util.ArrayList;
 
-public class ProductRepository implements Repository<Product, String> {
+// javada final keyword ile kalıtım sonlandırıyoruz
+// başka bir sınıf buradan kalıtım alamıyor
+// c# sealed keyword ile yapıyoruz mühürlü sınıf
+public final class ProductRepository implements Repository<Product, String> {
 
   // verilerimiz generic collections içerisinde tutuyor
   // burası veritabanından çekilen verilern tutulduğu tablo bağlantısı olarak

@@ -1,8 +1,6 @@
 import java.util.ArrayList;
 import java.util.UUID;
 
-import javax.swing.text.html.HTMLDocument.HTMLReader.PreAction;
-
 public class App {
 
     // var a = 5; // Global Scope bu tanımlamayı yapamıyoruz.
@@ -32,10 +30,24 @@ public class App {
         // id alanlarını UUID formatında generate etmek için kullanılan bir kütüphane
         System.out.println(UUID.randomUUID().toString());
 
+        // Repository Pattern ile veri tabanı işlemleri aynı kod formatında yapılmış
+        // olur.
+        var uRepo = new UserRepository();
+        uRepo.Create(usr);
+        uRepo.List();
+        uRepo.FindByName("Ürün"); // Interface üzerinden kazandırılan özellik
+        // Repository sınıflarımı interfacler ile genişletilebilir yeni yetenekler kazandırılabilir bir hale getiriyorum.
+
+        var cRepo = new CategoryRepository();
+        cRepo.Create(new Category());
+        cRepo.List();
+        cRepo.FindByName("sdsad");
+
         var pRepo = new ProductRepository();
         pRepo.Create(p);
         pRepo.Create(p1);
-        var plist =  pRepo.List();
+        pRepo.Find("1");
+        var plist = pRepo.List();
 
         p1.setName("Güncel Ürün"); // Ürün-2
         p1.setPrice(30); // 20
@@ -46,8 +58,8 @@ public class App {
         pRepo.Delete(p.getId()); // 3242432-234324234
         var plist2 = pRepo.List(); // listede 1 item olmalı
 
-        // Java OOP bir dil olduğundan bütüm tipler javada Object tipinden gizli bir kalıtım alıyor
-
+        // Java OOP bir dil olduğundan bütüm tipler javada Object tipinden gizli bir
+        // kalıtım alıyor
         // primative types (Stack)
         Object a = 10;
         Object b = 10.5;
@@ -58,11 +70,9 @@ public class App {
         Object l = new ArrayList<>();
         Object k = new ProductRepository();
 
-        int a1 = ((Integer)a).intValue();
+        int a1 = ((Integer) a).intValue();
         String a2 = d.toString();
-        boolean c1 = ((Boolean)c).booleanValue(); 
-
-
+        boolean c1 = ((Boolean) c).booleanValue();
 
     }
 }
